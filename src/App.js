@@ -1,20 +1,20 @@
 import React from "react"
 
 class HelloComponents extends React.Component {
-  handleClassClick = (e) => {
-    e.preventDefault()
-    // e.stopPropagation()
+  state = {
+    name: "ken",
+  }
 
-    console.log("handleClassClick", e)
+  changeName = () => {
+    this.setState({
+      name: "change Name",
+    })
   }
 
   render() {
     return (
       <div>
-        <a href="https://www.google.com/" onClick={this.handleClassClick}>
-          A Link
-        </a>
-        <h1>this is a hello components</h1>
+        <h1 onClick={this.changeName}>{this.state.name}</h1>
       </div>
     )
   }
@@ -36,7 +36,6 @@ function App() {
   return (
     <>
       <Hello />
-      <HelloComponents></HelloComponents>
       <HelloComponents></HelloComponents>
     </>
   )
