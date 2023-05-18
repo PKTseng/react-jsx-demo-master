@@ -1,42 +1,29 @@
 import React from "react"
 
-class HelloComponents extends React.Component {
+class Counter extends React.Component {
   state = {
-    name: "ken",
+    count: 0,
   }
-
-  changeName = () => {
+  addCount = () => {
     this.setState({
-      name: "change Name",
+      count: this.state.count + 1,
     })
   }
 
   render() {
     return (
-      <div>
-        <h1 onClick={this.changeName}>{this.state.name}</h1>
-      </div>
+      <>
+        <h1>{this.state.count}</h1>
+        <button onClick={this.addCount}> Count +1 </button>
+      </>
     )
   }
-}
-
-function Hello() {
-  const handleClick = () => {
-    console.log("handleClick")
-  }
-
-  return (
-    <>
-      <h1 onClick={handleClick}>Hello</h1>
-    </>
-  )
 }
 
 function App() {
   return (
     <>
-      <Hello />
-      <HelloComponents></HelloComponents>
+      <Counter />
     </>
   )
 }
