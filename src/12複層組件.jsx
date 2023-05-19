@@ -4,7 +4,6 @@ class Counter extends React.Component {
   state = {
     count: 0,
   }
-
   addCount = () => {
     this.setState({
       count: this.state.count + 1,
@@ -15,7 +14,7 @@ class Counter extends React.Component {
     return (
       <>
         <h1>{this.state.count}</h1>
-        <button onClick={this.addCount}>Add</button>
+        <button onClick={this.addCount}> Count +1 </button>
       </>
     )
   }
