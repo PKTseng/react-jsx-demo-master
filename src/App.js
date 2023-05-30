@@ -1,21 +1,18 @@
-import React from "react"
+import React, { createRef } from "react"
 
 class Counter extends React.Component {
-  state = {
-    count: 0,
-  }
+  msgRef = createRef()
 
-  addCount = () => {
-    this.setState({
-      count: this.state.count + 1,
-    })
+  getValue = () => {
+    console.log(this.msgRef.current.value)
   }
 
   render() {
     return (
       <>
-        <h1>{this.state.count}</h1>
-        <button onClick={this.addCount}>Add</button>
+        <input type="text" ref={this.msgRef} />
+
+        <button onClick={this.getValue}>GET VALUE</button>
       </>
     )
   }
