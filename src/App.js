@@ -1,18 +1,23 @@
-import React, { createRef } from "react"
+import React from "react"
 
-class Counter extends React.Component {
-  msgRef = createRef()
-
-  getValue = () => {
-    console.log(this.msgRef.current.value)
+function Fun() {
+  const clickHandler = () => {
+    console.log("fun")
   }
 
+  return (
+    <>
+      <button onClick={clickHandler}>click</button>
+    </>
+  )
+}
+
+class Hello extends React.Component {
   render() {
     return (
       <>
-        <input type="text" ref={this.msgRef} />
-
-        <button onClick={this.getValue}>GET VALUE</button>
+        <div>test</div>
+        <Fun />
       </>
     )
   }
@@ -21,7 +26,9 @@ class Counter extends React.Component {
 function App() {
   return (
     <>
-      <Counter />
+      <div>
+        <Hello />
+      </div>
     </>
   )
 }
