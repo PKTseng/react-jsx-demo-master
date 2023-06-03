@@ -7,7 +7,7 @@ function getTime(time) {
   return `${time.getFullYear()}/${time.getMonth() + 1}/${time.getDate()} ${time.getHours()}:${time.getMinutes()}:${time.getSeconds()} `
 }
 
-class AppClass extends React.Component {
+class App extends React.Component {
   // 依赖的数据
   state = {
     // hot: 热度排序  time: 时间排序
@@ -53,12 +53,10 @@ class AppClass extends React.Component {
   }
 
   switchValue = (type) => {
-    this.setState({
-      active: type,
-    })
+    console.log(type)
   }
 
-  render() {
+  return() {
     return (
       <div className="App">
         <div className="comment-container">
@@ -71,7 +69,7 @@ class AppClass extends React.Component {
           <div className="tabs-order">
             <ul className="sort-container">
               {this.state.tabs.map((i) => (
-                <li onClick={() => this.switchValue(i.type)} className={i.type === this.state.active ? "on" : ""} key={i.id}>
+                <li onClick={() => this.switchValue(i.type)} className={i.type === "hot" ? "on" : ""} key={i.id}>
                   按{i.name}排序
                 </li>
               ))}
@@ -121,14 +119,6 @@ class AppClass extends React.Component {
       </div>
     )
   }
-}
-
-function App() {
-  return (
-    <>
-      <AppClass />
-    </>
-  )
 }
 
 export default App
