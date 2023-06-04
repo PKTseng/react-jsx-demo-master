@@ -1,10 +1,17 @@
 import React from 'react'
 
-function SonFunction({ message, getMsg }) {
+function SonFunctionA({ getMsg }) {
   return (
     <>
-      <h2>Function {message}</h2>
-      <button onClick={() => getMsg('hello world')}>getMsg</button>
+      <button onClick={() => getMsg('test')}>getMsg </button>
+    </>
+  )
+}
+
+function SonFunctionB({ sonStatus }) {
+  return (
+    <>
+      <h2>SonFunctionB {sonStatus}</h2>
     </>
   )
 }
@@ -30,17 +37,21 @@ class App extends React.Component {
   state = {
     message: 'this is message',
     list: [1, 2, 3],
+    sonStatus: '',
   }
 
-  getMsg = (sonMsg) => {
-    console.log('sonMsg', sonMsg)
+  getMsg = (text) => {
+    this.setState({
+      sonStatus: text,
+    })
   }
 
   render() {
     return (
       <>
-        <SonFunction message={this.state.message} list={this.state.list} getMsg={this.getMsg} />
-        <SonClass message={this.state.message} list={this.state.list} getMsg={this.getMsg} />
+        <SonFunctionA getMsg={this.getMsg} />
+        <SonFunctionB sonStatus={this.state.sonStatus} />
+        {/* <SonClass message={this.state.message} list={this.state.list} getMsg={this.getMsg} /> */}
       </>
     )
   }
