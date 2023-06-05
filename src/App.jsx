@@ -1,18 +1,20 @@
 import React from 'react'
 
-function ListItem({ item, deleteItem }) {
+function ListItem({ i, deleteItem }) {
   return (
     <>
-      <h2>{item.name}</h2>
-      <p>{item.price}</p>
-      <p>{item.info}</p>
-      <button onClick={() => deleteItem(item)}>deleteItem</button>
+      <h2>{i.name}</h2>
+      <p>{i.price}</p>
+      <p>{i.info}</p>
+
+      <button onClick={() => deleteItem(i)}>deleteItem</button>
     </>
   )
 }
 
 class App extends React.Component {
   state = {
+    // 列表数据
     list: [
       { id: 1, name: '超级好吃的棒棒糖', price: 18.8, info: '开业大酬宾，全场8折' },
       { id: 2, name: '超级好吃的大鸡腿', price: 34.2, info: '开业大酬宾，全场8折' },
@@ -20,17 +22,17 @@ class App extends React.Component {
     ],
   }
 
-  deleteItem = (emitItem) => {
+  deleteItem = (i) => {
     this.setState({
-      list: this.state.list.filter((i) => i.id !== emitItem.id),
+      list: this.state.list.filter((item) => i.id !== item.id),
     })
   }
 
   render() {
     return (
       <>
-        {this.state.list.map((item) => (
-          <ListItem item={item} key={item.id} deleteItem={this.deleteItem} />
+        {this.state.list.map((i) => (
+          <ListItem i={i} key={i.id} deleteItem={this.deleteItem} />
         ))}
       </>
     )
